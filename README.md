@@ -6,6 +6,18 @@
 - El archivo **graf.pro** permite graficar los histogramas normalizados con su respectiva función de distribución. Los datos necesarios para realizar esta tarea están disponibles en las carpetas: **Datos procesados (1-10).zip**, **Datos procesados (11-20).zip** y **Datos procesados (21-26).zip**. En las carpetas mencionadas se encuentran los histogramas no normalizados extraídos directamente del 3D-Slicer.
 
 - La carpeta **PyRadiomics personalizado.zip** ***contiene los archivos .py que deben ser reemplazados para extraer únicamente las 12 características utilizadas en este trabajo de titulación***. 
+###### Instalación y modificación de PyRadiomics
+1. Utilizamos el proceso de instalación 3 (Install from source) disponible en: https://pyradiomics.readthedocs.io/en/latest/installation.html#installation. Es decir, primero clonamos el repositorio
+```
+git clone git://github.com/Radiomics/pyradiomics
+```
+Luego escribimos en la terminal lo siguiente:
+```
 
-
+cd pyradiomics
+python -m pip install -r requirements.txt
+python setup.py install
+```
+3. 
+4.
 
