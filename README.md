@@ -30,4 +30,5 @@ El repositorio contiene las características de todos los segmentos con sus resp
 - **Red_PCA2_(0_2).ipynb**
 - **Red_PCA2_(0_3).ipynb**
 - **Red_PCA3_(0_2).ipynb**
-- **Red_PCA3_(0_3).ipynb** son importantes para la construcción de las diferentes redes neuronales. En cada .pynb existe una pequeña guía que describe las diferentes actividades realizadas.
+- **Red_PCA3_(0_3).ipynb** 
+son importantes para la construcción de las diferentes redes neuronales. En cada .pynb existe una pequeña guía que describe las diferentes actividades realizadas.
