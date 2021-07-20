@@ -1,0 +1,44 @@
+# Ingreso de imagen
+################################################
+
+# Cargar la imagen principal y el archivo creado para almacenar segmentaciones
+import SampleData
+sampleDataLogic = SampleData.SampleDataLogic()
+imageNode = getNode('1in.dcm')   #llamo a la imagen
+
+# Creo el ambiente para la segmentacion
+segmentationNode = getNode('Segmentation') # Aqui se almacena la segm
+slicer.mrmlScene.AddNode(segmentationNode)
+segmentationNode.CreateDefaultDisplayNodes() # Necesario para el display
+segmentationNode.SetReferenceImageGeometryParameterFromVolumeNode(imageNode)
+
+# Creo un segmento
+segment = vtk.vtkSphereSource()
+segment.SetCenter(5, 74, 73)
+segment.SetRadius(15)
+segment.Update()
+segmentationNode.AddSegmentFromClosedSurfaceRepresentation(segment.GetOutput(), "Segment_8out", [1.0,0.0,0.0])
+
+# Calculo el histograma
+labelValue = 1  # label value of first segment
+
+# Obtengo la segmentacion
+labelmapVolumeNode = slicer.mrmlScene.AddNewNodeByClass('vtkMRMLLabelMapVolumeNode')
+slicer.modules.segmentations.logic().ExportVisibleSegmentsToLabelmapNode(segmentationNode, labelmapVolumeNode, imageNode)
+
+# Extraigo los voxeles como un numpy array
+volumeArray = slicer.util.arrayFromVolume(imageNode)
+labelArray = slicer.util.arrayFromVolume(labelmapVolumeNode)
+segmentVoxels = volumeArray[labelArray==labelValue]
+
+import numpy as np
+histogram = np.histogram(segmentVoxels, bins=13)
+
+# Plot histogram
+slicer.util.plot(histogram, xColumnIndex = 1)
+
+viewNodeID = 'vtkMRMLSliceNodeGreen'
+import ScreenCapture
+cap = ScreenCapture.ScreenCaptureLogic()
+view = cap.viewFromNode(slicer.mrmlScene.GetNodeByID(viewNodeID))
+cap.captureImageFromView(view,'c:/Users/aleja/Desktop/Datos/Grupo 4/AAV7/Segment 26 in/26seg_in2.png')
