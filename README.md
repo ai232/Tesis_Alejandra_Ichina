@@ -13,11 +13,13 @@ git clone git://github.com/Radiomics/pyradiomics
 ```
 Luego escribimos en la terminal lo siguiente:
 ```
-
 cd pyradiomics
 python -m pip install -r requirements.txt
 python setup.py install
 ```
-3. 
-4.
+2. Se creará una carpeta pyradiomics la cual contiene la carpeta radiomics. En esta última se reemplazarán 8 archivos .py. Estos nuevos archivos son los disponibles en PyRadiomics personalizado.zip
+3. Finalmente se volverá a correr la línea:
+```
+python setup.py install
+```
 
